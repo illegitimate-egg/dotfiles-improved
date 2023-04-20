@@ -1,0 +1,49 @@
+* {
+	font-family: FiraCode, Noto Sans, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+	font-size: 13px;
+}
+
+#custom-notifications,
+#mpd,
+#workspaces,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#battery,
+#clock,
+#tray {
+	padding: 0 10px;
+	color: white;
+	border: 1px solid white;
+	margin: 0;
+}
+
+window#waybar {
+	background-color: rgba(0, 0, 0, 0.8);
+	border-bottom: 1px solid white;
+}
+
+#workspaces {
+	padding: 0;
+}
+
+#workspaces button {
+	border: 1px solid white;
+	border-radius: 0;
+}
+
+#workspaces button label {
+	color: grey;
+}
+
+#workspaces button.active label {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+#workspaces button.active {
+	background: white;
+}

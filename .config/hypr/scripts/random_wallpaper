@@ -1,0 +1,27 @@
+#!/bin/sh
+
+_randomImage() {
+	images=$(/usr/bin/find "$1" -type f \( -name '*.jpg' -o -name '*.png' \))
+	
+	num_images=$(echo "$images" | wc -l)
+	
+	cleanImages=$(echo "$images" | sed -e 's/.*\///' -e 's/\.[^.]*$//')
+	cleanImages=$(echo $cleanImages | sort)
+	
+	if [ "$num_images" -gt 1 ]; then
+		image=$(echo "$images" | sed -n "$(( $RANDOM % $num_images + 1))p")
+		if [ "$image" == "$lastimage" ]; then
+			_randomImage "$1"
+		fi
+	else
+		image=$(echo "$images" | sed -n "1p")
+	fi
+
+	lastImage=$image
+
+	echo "Image: ${image}"
+}
+
+_randomImage "/home/cameronpeck/.wallpapers"
+swww init
+swww img ${image} --transition-type wipe --transition-angle 30 --transition-step 90
